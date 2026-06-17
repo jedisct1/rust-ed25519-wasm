@@ -1,0 +1,7 @@
+*~
+.swival
+Cargo.lock
+target
+tmp
+wasm-libs/.zig-cache
+wasm-libs/zig-out
