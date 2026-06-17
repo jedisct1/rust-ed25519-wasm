@@ -1,0 +1,60 @@
+[package]
+name = "ed25519-wasm"
+version = "0.1.0"
+edition = "2021"
+authors = ["Frank Denis <github@pureftpd.org>"]
+description = "Ed25519 signatures for WebAssembly backed by linked lib25519 code"
+license = "MIT"
+homepage = "https://github.com/jedisct1/rust-ed25519-wasm"
+repository = "https://github.com/jedisct1/rust-ed25519-wasm"
+readme = "README.md"
+categories = ["cryptography", "wasm"]
+keywords = ["ed25519", "wasm", "signature", "lib25519"]
+include = [
+    "/Cargo.toml",
+    "/build.rs",
+    "/README.md",
+    "/LICENSE",
+    "/src/**/*.rs",
+    "/tests/**/*.rs",
+    "/wasm-libs/build.zig",
+    "/wasm-libs/libed25519.a",
+    "/c/lib25519/README.md",
+    "/c/lib25519/api",
+    "/c/lib25519/version",
+    "/c/lib25519/LICENSES/**",
+    "/c/lib25519/crypto_hash/sha512/ref/*.c",
+    "/c/lib25519/crypto_hash/sha512/ref/*.h",
+    "/c/lib25519/crypto_hashblocks/sha512/m3/constants.c",
+    "/c/lib25519/crypto_hashblocks/sha512/m3/inner.h",
+    "/c/lib25519/crypto_hashblocks/sha512/wflip/inner.c",
+    "/c/lib25519/crypto_hashblocks/sha512/wflip/inner.h",
+    "/c/lib25519/crypto_mGnP/ed25519/ref10/*.c",
+    "/c/lib25519/crypto_mGnP/ed25519/ref10/*.h",
+    "/c/lib25519/crypto_nG/merged25519/ref10/*.c",
+    "/c/lib25519/crypto_nG/merged25519/ref10/*.h",
+    "/c/lib25519/crypto_pow/inv25519/ref10/*.c",
+    "/c/lib25519/crypto_pow/inv25519/ref10/*.h",
+    "/c/lib25519/crypto_sign/ed25519/amd64/keypair.c",
+    "/c/lib25519/crypto_sign/ed25519/amd64/open.c",
+    "/c/lib25519/crypto_sign/ed25519/ref10/sign.c",
+    "/c/lib25519/crypto_sign/ed25519/ref10/sc.h",
+    "/c/lib25519/crypto_sign/ed25519/ref10/sc_muladd.c",
+    "/c/lib25519/crypto_verify/32/ref/**",
+    "/c/lib25519/cryptoint/crypto_*.h",
+    "/c/lib25519/cryptoint/*8_optblocker.c",
+    "/c/lib25519/cryptoint/*16_optblocker.c",
+    "/c/lib25519/cryptoint/*32_optblocker.c",
+    "/c/lib25519/cryptoint/*64_optblocker.c",
+    "/c/lib25519/wasm/include/**",
+    "/c/lib25519/wasm/nG_ed25519.c",
+    "/c/lib25519/wasm/randombytes.c",
+]
+
+[dependencies]
+getrandom = "0.4"
+
+[profile.release]
+codegen-units = 1
+incremental = false
+panic = "abort"
