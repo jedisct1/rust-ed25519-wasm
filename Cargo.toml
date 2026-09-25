@@ -3,13 +3,13 @@ name = "ed25519-wasm"
 version = "0.1.0"
 edition = "2021"
 authors = ["Frank Denis <github@pureftpd.org>"]
-description = "Ed25519 signatures for WebAssembly backed by linked lib25519 code"
+description = "Ed25519 digital signatures for WebAssembly: key generation, signing, and verification backed by lib25519"
 license = "MIT"
 homepage = "https://github.com/jedisct1/rust-ed25519-wasm"
 repository = "https://github.com/jedisct1/rust-ed25519-wasm"
 readme = "README.md"
 categories = ["cryptography", "wasm"]
-keywords = ["ed25519", "wasm", "signature", "lib25519"]
+keywords = ["ed25519", "signature", "eddsa", "wasm", "webassembly"]
 include = [
     "/Cargo.toml",
     "/build.rs",
