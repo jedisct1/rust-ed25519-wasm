@@ -33,7 +33,11 @@ The table reports median time per operation and relative speed compared to this 
 
 ## Rebuilding the library
 
-`build.rs` links `wasm-libs/libed25519.a` for `wasm32` targets
+`build.rs` links `wasm-libs/libed25519.a` for `wasm32` targets.
+
+The archive is built for `wasm32-freestanding`.
+It doesn't need a C library or WASI, so the same archive works for `wasm32-wasip1`, `wasm32-wasip2` and `wasm32-unknown-unknown`.
+When a message is signed without noise, the C code gets its random bytes from the Rust side through `getrandom`.
 
 The archive is reproducible with:
 

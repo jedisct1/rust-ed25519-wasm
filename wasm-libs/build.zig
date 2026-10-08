@@ -4,7 +4,7 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{
         .default_target = .{
             .cpu_arch = .wasm32,
-            .os_tag = .wasi,
+            .os_tag = .freestanding,
             .cpu_features_add = std.Target.wasm.featureSet(&.{ .simd128, .bulk_memory }),
         },
     });
@@ -15,7 +15,6 @@ pub fn build(b: *std.Build) void {
     const lib_mod = b.createModule(.{
         .target = target,
         .optimize = optimize,
-        .link_libc = true,
     });
     lib_mod.addIncludePath(b.path("../c/lib25519/wasm/include"));
     lib_mod.addIncludePath(b.path("../c/lib25519/cryptoint"));

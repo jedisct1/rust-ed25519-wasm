@@ -35,9 +35,9 @@ fn signs_and_verifies() {
 }
 
 #[test]
-fn signing_without_noise_uses_wasi_randomness() {
+fn signing_without_noise_uses_system_randomness() {
     let kp = KeyPair::from_seed(Seed::new(RFC8032_SEED));
-    let msg = b"wasi random_get";
+    let msg = b"system randomness";
     let sig1 = kp.sk.sign(msg, None);
     let sig2 = kp.sk.sign(msg, None);
 

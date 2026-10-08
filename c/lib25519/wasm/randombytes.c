@@ -1,8 +1,11 @@
 #include "randombytes.h"
 
 #include <stddef.h>
-#include <stdint.h>
-#include <wasi/api.h>
+
+/*
+ * Must be implemented by the embedder
+ */
+int ed25519_wasm_getrandom(unsigned char *,size_t);
 
 static int randombytes_seeded = 0;
 
@@ -81,7 +84,7 @@ void randombytes(unsigned char *out,long long outlen)
     return;
   }
 
-  if (__wasi_random_get((uint8_t *) out,(size_t) outlen) != 0) {
+  if (ed25519_wasm_getrandom(out,(size_t) outlen) != 0) {
     __builtin_trap();
   }
 }

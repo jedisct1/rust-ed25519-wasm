@@ -20,6 +20,16 @@ mod ffi {
         pub fn crypto_hash_sha512(out: *mut u8, input: *const u8, len: i64);
         pub fn randombytes_seed_bytes(seed: *const u8, seedlen: i64);
     }
+
+    #[no_mangle]
+    unsafe extern "C" fn ed25519_wasm_getrandom(out: *mut u8, len: usize) -> i32 {
+        let out = core::slice::from_raw_parts_mut(out, len);
+        if getrandom::fill(out).is_ok() {
+            0
+        } else {
+            -1
+        }
+    }
 }
 
 /// Errors returned by parsing and verification operations.
