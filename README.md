@@ -1,7 +1,8 @@
 # ed25519-wasm
 
 High-performance Ed25519 signatures for WebAssembly, backed by
-[`lib25519`](https://lib25519.cr.yp.to/).
+[`lib25519`](https://lib25519.cr.yp.to/) and libsodium's
+field arithmetic.
 
 The API mirrors the common one-shot parts of `ed25519-compact`:
 
